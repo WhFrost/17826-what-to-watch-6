@@ -1,10 +1,11 @@
-import React from 'react';
-import MainPage from '../main-page/main-page';
+import React from "react";
 import PropTypes from "prop-types";
+import MainPage from "../main-page/main-page";
 
 const App = (props) => {
   const {FILMS} = props;
   return (
+
     <MainPage FILMS = {FILMS} />
   );
 };

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import MovieCard from "./movie-card";
-import MovieCardSmall from './movie-card-small';
-import PropTypes from 'prop-types';
+import MovieCardSmall from "./movie-card-small";
+import PropTypes from "prop-types";
 
 const MainPage = (props) => {
   const {FILMS} = props;
