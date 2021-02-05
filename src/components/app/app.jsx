@@ -1,11 +1,42 @@
-import React from 'react';
-import MainPage from '../main-page/main-page';
+import React from "react";
 import PropTypes from "prop-types";
+import {Switch, Route, BrowserRouter} from "react-router-dom";
+import MainPage from "../main-page/main-page";
+import Film from "../films/film";
+import AddReview from "../films/review";
+import Login from "../login/login";
+import MyList from "../my-list/mylist";
+import Player from "../player/player";
+import PageNotFound from "../404";
 
 const App = (props) => {
   const {FILMS} = props;
   return (
-    <MainPage FILMS = {FILMS} />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <MainPage FILMS={FILMS}/>
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/mylist">
+          <MyList />
+        </Route>
+        <Route exact path="/films/:id">
+          <Film />
+        </Route>
+        <Route exact path="/films/:id/review">
+          <AddReview />
+        </Route>
+        <Route exact path="/player/:id">
+          <Player />
+        </Route>
+        <Route>
+          <PageNotFound />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 };
 
