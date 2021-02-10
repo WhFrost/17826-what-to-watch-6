@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const MovieCardSmall = (props) => {
-  const {name, poster} = props;
+  const {name, posterImage} = props;
   return (
     <article className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
-        <img src={poster} alt={name} width="280" height="175"/>
+        <img src={posterImage} alt={name} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="movie-page.html">{name}</a>
@@ -17,7 +17,7 @@ const MovieCardSmall = (props) => {
 
 MovieCardSmall.propTypes = {
   name: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  posterImage: PropTypes.string.isRequired,
 };
 
 export default MovieCardSmall;

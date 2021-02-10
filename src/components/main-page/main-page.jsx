@@ -4,7 +4,7 @@ import MovieCardSmall from "./movie-card-small";
 import PropTypes from "prop-types";
 
 const MainPage = (props) => {
-  const {FILMS} = props;
+  const {films} = props;
   return (
     <React.Fragment>
       <MovieCard />
@@ -46,7 +46,7 @@ const MainPage = (props) => {
 
           <div className="catalog__movies-list">
             {
-              FILMS.map((film) => <MovieCardSmall key={film.id} name={film.name} poster={film.poster}/>)
+              films.map((film) => <MovieCardSmall key={film.id} name={film.name} posterImage={film.posterImage}/>)
             }
           </div>
 
@@ -74,7 +74,7 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  FILMS: PropTypes.array.isRequired,
+  films: PropTypes.array.isRequired,
 };
 
 export default MainPage;
