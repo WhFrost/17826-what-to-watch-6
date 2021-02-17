@@ -10,18 +10,22 @@ import Player from "../player/player";
 import PageNotFound from "../404";
 
 const App = (props) => {
-  const {films} = props;
+  const {filters, films} = props;
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainPage films={films}/>
+          <MainPage
+            filters={filters}
+            films={films}/>
         </Route>
         <Route exact path="/login">
           <Login />
         </Route>
         <Route exact path="/mylist">
-          <MyList />
+          <MyList
+            films={films}
+          />
         </Route>
         <Route exact path="/films/:id">
           <Film />
@@ -41,6 +45,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
+  filters: PropTypes.array.isRequired,
   films: PropTypes.array.isRequired,
 };
 

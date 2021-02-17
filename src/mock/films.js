@@ -63,17 +63,17 @@ const stars = [
 const getStars = () => {
   return getRandomItem(stars);
 };
-const genres = [
-  `Animation`,
-  `Courtroom drama`,
-  `Epic`,
-  `Fantasy`,
-  `Gangster`,
-  `Mystery`,
-  `Romantic comedy`,
-  `Science fiction`,
-  `Sports`,
-  `Western`
+const GENRES = [
+  `All genres`,
+  `Comedies`,
+  `Crime`,
+  `Documentary`,
+  `Dramas`,
+  `Horror`,
+  `Kids & Family`,
+  `Romance`,
+  `Sci-Fi`,
+  `Thrillers`
 ];
 
 const getFilm = () => {
@@ -93,7 +93,7 @@ const getFilm = () => {
     director: getRandomItem(directors),
     starring: randomStars,
     runtime: getRandomInteger(80, 160),
-    genre: getRandomItem(genres),
+    genre: getRandomItem(GENRES),
     released: getRandomInteger(1990, 2021),
     isFavorite: Boolean(getRandomInteger(0, 1))
   };
@@ -102,5 +102,6 @@ const getFilm = () => {
 const films = new Array(COUNT_FILMS).fill().map(getFilm);
 
 export {
+  GENRES,
   films
 };
