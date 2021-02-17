@@ -88,7 +88,7 @@ const getFilm = () => {
     videoLink: getRandomItem(videos),
     previewVideoLink: getRandomItem(videos),
     description: randomDescription,
-    rating: getRandomInteger(0, 10) / 10,
+    rating: getRandomInteger(0, 100) / 10,
     scoresCount: getRandomInteger(0, 500),
     director: getRandomItem(directors),
     starring: randomStars,
