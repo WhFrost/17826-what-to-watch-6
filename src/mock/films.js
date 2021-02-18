@@ -79,6 +79,17 @@ const GENRES = [
 const getFilm = () => {
   const randomDescription = new Array(getRandomInteger(1, description.length)).fill().map(getDescription);
   const randomStars = new Array(getRandomInteger(1, MAX_STARS)).fill().map(getStars);
+  const duration = getRandomInteger(60, 180);
+  const getFormatDuration = (time) => {
+    const hours = Math.floor(time / 60);
+    const minutes = Math.floor(time % 60);
+    const seconds = Math.floor(minutes / 60);
+    if (hours < 1) {
+      return minutes + `:` + seconds;
+    }
+    return hours + `:` + minutes + `:` + seconds;
+  };
+
   return {
     id: nanoid(),
     name: getRandomItem(names),
@@ -92,7 +103,7 @@ const getFilm = () => {
     scoresCount: getRandomInteger(0, 500),
     director: getRandomItem(directors),
     starring: randomStars,
-    runtime: getRandomInteger(80, 160),
+    runtime: getFormatDuration(duration),
     genre: getRandomItem(GENRES),
     released: getRandomInteger(1990, 2021),
     isFavorite: Boolean(getRandomInteger(0, 1))

@@ -1,11 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {useHistory} from "react-router-dom";
 import Header from "../main-page/header";
 
 const FilmCard = (props) => {
-  const {name, posterImage, backgroundImage, genre, released} = props;
+  const {
+    id,
+    name,
+    posterImage,
+    backgroundImage,
+    backgroundColor,
+    genre,
+    released} = props;
+  const history = useHistory();
   return (
-    <section className="movie-card">
+    <section className="movie-card" style={{backgroundColor}}>
       <div className="movie-card__bg">
         <img src={backgroundImage} alt={name}/>
       </div>
@@ -26,7 +35,8 @@ const FilmCard = (props) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
+              <button className="btn btn--play movie-card__button" type="button"
+                onClick={() => history.push(`/player/${id}`)}>
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>
@@ -47,9 +57,11 @@ const FilmCard = (props) => {
 };
 
 FilmCard.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   posterImage: PropTypes.string.isRequired,
   backgroundImage: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   released: PropTypes.number.isRequired,
 };

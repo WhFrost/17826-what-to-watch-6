@@ -9,9 +9,11 @@ const MainPage = (props) => {
   return (
     <>
       <FilmCard
+        id={films[0].id}
         name={films[0].name}
         posterImage={films[0].posterImage}
         backgroundImage={films[0].backgroundImage}
+        backgroundColor={films[0].backgroundColor}
         genre={films[0].genre}
         released={films[0].released}
       />
