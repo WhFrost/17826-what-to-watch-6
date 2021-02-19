@@ -18,7 +18,7 @@ const videos = [
   `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 ];
-const description = [
+const DESCRIPTION = [
   `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
   `Cras aliquet varius magna, non porta ligula feugiat eget.`,
   `Fusce tristique felis at fermentum pharetra.`,
@@ -30,9 +30,9 @@ const description = [
   `In rutrum ac purus sit amet tempus.`
 ];
 const getDescription = () => {
-  return getRandomItem(description);
+  return getRandomItem(DESCRIPTION);
 };
-const directors = [
+const DIRECTORS = [
   `Steven Spielberg`,
   `Martin Scorsese`,
   `Alfred Hitchcock`,
@@ -43,7 +43,7 @@ const directors = [
   `John Huston`,
   `Peter Jackson`
 ];
-const stars = [
+const STARS = [
   `Johnny Depp`,
   `Al Pacino`,
   `Robert De Niro`,
@@ -61,7 +61,7 @@ const stars = [
   `Christian Bale`,
 ];
 const getStars = () => {
-  return getRandomItem(stars);
+  return getRandomItem(STARS);
 };
 const GENRES = [
   `All genres`,
@@ -77,7 +77,7 @@ const GENRES = [
 ];
 
 const getFilm = () => {
-  const randomDescription = new Array(getRandomInteger(1, description.length)).fill().map(getDescription);
+  const randomDescription = new Array(getRandomInteger(1, DESCRIPTION.length)).fill().map(getDescription);
   const randomStars = new Array(getRandomInteger(1, MAX_STARS)).fill().map(getStars);
   const duration = getRandomInteger(60, 180);
   const getFormatDuration = (time) => {
@@ -101,7 +101,7 @@ const getFilm = () => {
     description: randomDescription,
     rating: getRandomInteger(0, 100) / 10,
     scoresCount: getRandomInteger(0, 500),
-    director: getRandomItem(directors),
+    director: getRandomItem(DIRECTORS),
     starring: randomStars,
     runtime: getFormatDuration(duration),
     genre: getRandomItem(GENRES),
@@ -114,5 +114,7 @@ const films = new Array(COUNT_FILMS).fill().map(getFilm);
 
 export {
   GENRES,
+  DESCRIPTION,
+  DIRECTORS,
   films
 };
