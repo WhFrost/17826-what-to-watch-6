@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from "../main-page/main-page";
 import Film from "../films/film";
-import AddReview from "../review/add-review";
+import AddReviewScreen from "../review/add-review-screen";
 import Login from "../login/login";
 import MyList from "../my-list/mylist";
 import Player from "../player/player";
 import PageNotFound from "../404";
 
 const App = (props) => {
-  const {filters, films, rating} = props;
+  const {filters, films} = props;
   return (
     <BrowserRouter>
       <Switch>
@@ -33,8 +33,7 @@ const App = (props) => {
           />
         </Route>
         <Route exact path="/films/:id/review">
-          <AddReview
-            rating={rating}
+          <AddReviewScreen
             films={films}
           />
         </Route>
@@ -54,7 +53,6 @@ const App = (props) => {
 App.propTypes = {
   filters: PropTypes.array.isRequired,
   films: PropTypes.array.isRequired,
-  rating: PropTypes.array.isRequired,
 };
 
 export default App;
