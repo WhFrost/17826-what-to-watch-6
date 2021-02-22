@@ -94,6 +94,7 @@ const getFilm = () => {
     id: nanoid(),
     name: getRandomItem(names),
     posterImage: `http://picsum.photos/280/175?r=${Math.random()}`,
+    previewImage: `http://picsum.photos/280/175?r=${Math.random()}`,
     backgroundImage: `http://picsum.photos/248/152?r=${Math.random()}`,
     backgroundColor: getRandomItem(colors),
     videoLink: getRandomItem(videos),

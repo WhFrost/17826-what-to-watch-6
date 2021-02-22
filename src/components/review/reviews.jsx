@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import {Link, useParams} from "react-router-dom";
 import Header from "../main-page/header";
 import Catalog from "../catalog/catalog";
 import Footer from "../main-page/footer";
 import ReviewsList from "./reviews-list";
+import {PROPS_COMMENT} from "../../prop-validation";
 
-const Reviews = (props) => {
-  const {reviews} = props;
+const Reviews = (reviews) => {
   return <> <section className="movie-card movie-card--full">
     <div className="movie-card__hero">
       <div className="movie-card__bg">
@@ -76,7 +75,7 @@ const Reviews = (props) => {
 };
 
 Reviews.propTypes = {
-  reviews: PropTypes.array.isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape(PROPS_COMMENT)).isRequired,
 };
 
 export default Reviews;

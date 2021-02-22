@@ -4,6 +4,7 @@ import {Link, useHistory, useParams} from "react-router-dom";
 import Header from "../main-page/header";
 import Footer from "../main-page/footer";
 import FilmsList from "../catalog/films-list";
+import {PROPS_FILM} from "../../prop-validation";
 
 const Film = (props) => {
   const {films} = props;
@@ -123,7 +124,7 @@ const Film = (props) => {
 };
 
 Film.propTypes = {
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
 export default Film;

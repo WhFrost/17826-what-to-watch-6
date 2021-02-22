@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import FilmsList from "./films-list";
 import FiltersList from "./filters-list";
+import {PROPS_FILM} from "../../prop-validation";
 
 const Catalog = (props) => {
   const {filters, films} = props;
@@ -17,7 +18,7 @@ const Catalog = (props) => {
 
 Catalog.propTypes = {
   filters: PropTypes.array.isRequired,
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired
 };
 
 export default Catalog;

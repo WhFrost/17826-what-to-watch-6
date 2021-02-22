@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import {PROPS_FILM} from "../../prop-validation";
 
-const FilmCardSmall = (props) => {
-  const {id, name, posterImage} = props;
+const FilmCardSmall = (film) => {
+  const {id, name, posterImage} = film;
   return (
     <article className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
@@ -17,9 +18,7 @@ const FilmCardSmall = (props) => {
 };
 
 FilmCardSmall.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  posterImage: PropTypes.string.isRequired,
+  film: PropTypes.shape(PROPS_FILM)
 };
 
 export default FilmCardSmall;

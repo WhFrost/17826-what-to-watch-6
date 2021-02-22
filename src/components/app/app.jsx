@@ -8,6 +8,7 @@ import Login from "../login/login";
 import MyList from "../my-list/mylist";
 import Player from "../player/player";
 import PageNotFound from "../404";
+import {PROPS_FILM} from "../../prop-validation";
 
 const App = (props) => {
   const {filters, films} = props;
@@ -52,7 +53,7 @@ const App = (props) => {
 
 App.propTypes = {
   filters: PropTypes.array.isRequired,
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
 export default App;

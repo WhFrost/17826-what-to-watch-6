@@ -2,8 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import {useHistory} from "react-router-dom";
 import Header from "../main-page/header";
+import {PROPS_FILM} from "../../prop-validation";
 
 const FilmCard = (props) => {
+  const {films, filmIndex} = props;
+  const film = films[filmIndex];
   const {
     id,
     name,
@@ -11,7 +14,7 @@ const FilmCard = (props) => {
     backgroundImage,
     backgroundColor,
     genre,
-    released} = props;
+    released} = film;
   const history = useHistory();
   return (
     <section className="movie-card" style={{backgroundColor}}>
@@ -57,13 +60,8 @@ const FilmCard = (props) => {
 };
 
 FilmCard.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  posterImage: PropTypes.string.isRequired,
-  backgroundImage: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  released: PropTypes.number.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
+  filmIndex: PropTypes.number.isRequired
 };
 
 export default FilmCard;

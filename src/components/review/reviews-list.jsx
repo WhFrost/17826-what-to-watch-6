@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Review from "./review-item";
+import ReviewItem from "./review-item";
+import {PROPS_COMMENT} from "../../prop-validation";
 
-const ReviewsList = (props) => {
-  const {reviews} = props;
+const ReviewsList = (reviews) => {
   return <div className="movie-card__reviews movie-card__row">
     <div className="movie-card__reviews-col">
       {
-        reviews.map((review) => <Review key={review.id}
+        reviews.map((review) => <ReviewItem key={review.id}
           id={review.id}
           name={review.name}
           comment={review.comment}
@@ -20,7 +20,7 @@ const ReviewsList = (props) => {
 };
 
 ReviewsList.propTypes = {
-  reviews: PropTypes.array.isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape(PROPS_COMMENT)).isRequired,
 };
 
 export default ReviewsList;

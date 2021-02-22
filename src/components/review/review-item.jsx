@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {PROPS_COMMENT} from "../../prop-validation";
 
-const Review = (props) => {
-  const {name, comment, date, rating} = props;
-  const currentComment = comment.reduce((total, current) => total + ` ` + current);
+const ReviewItem = (comment) => {
+  const {name, commentText, date, rating} = comment;
+  const currentCommentText = commentText.reduce((total, current) => total + ` ` + current);
   return <div className="review">
     <blockquote className="review__quote">
-      <p className="review__text">{currentComment}</p>
+      <p className="review__text">{currentCommentText}</p>
       <footer className="review__details">
         <cite className="review__author">{name}</cite>
         <time className="review__date" dateTime={date}>{date}</time>
@@ -16,9 +17,8 @@ const Review = (props) => {
   </div>;
 };
 
-Review.propTypes = {
-  name: PropTypes.string.isRequired,
-  comment: PropTypes.arrayOf(PropTypes.string).isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
-  rating: PropTypes.number.isRequired,
+ReviewItem.propTypes = {
+  comment: PropTypes.arrayOf(PropTypes.shape(PROPS_COMMENT)).isRequired,
 };
+
+export default ReviewItem;

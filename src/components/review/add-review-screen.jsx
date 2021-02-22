@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Link, useParams} from "react-router-dom";
 import Logo from "../main-page/logo";
 import UserBlock from "../main-page/user-block";
+import {PROPS_FILM} from "../../prop-validation";
 
 const AddReviewScreen = (props) => {
   const {films} = props;
@@ -15,6 +16,7 @@ const AddReviewScreen = (props) => {
     comment: ``
   });
   const {rating, comment} = userAction;
+  console.log(userAction);
 
   return (
     <section className="movie-card movie-card--full" style={{backgroundColor}}>
@@ -91,7 +93,7 @@ const AddReviewScreen = (props) => {
 };
 
 AddReviewScreen.propTypes = {
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
 export default AddReviewScreen;

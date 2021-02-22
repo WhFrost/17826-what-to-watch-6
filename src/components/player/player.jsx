@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {useHistory, useParams} from "react-router-dom";
+import {PROPS_FILM} from "../../prop-validation";
 
 const Player = (props) => {
   const {films} = props;
@@ -51,7 +52,7 @@ const Player = (props) => {
 };
 
 Player.propTypes = {
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
 export default Player;
