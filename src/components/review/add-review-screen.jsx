@@ -16,7 +16,6 @@ const AddReviewScreen = (props) => {
     comment: ``
   });
   const {rating, comment} = userAction;
-  console.log(userAction);
 
   return (
     <section className="movie-card movie-card--full" style={{backgroundColor}}>
