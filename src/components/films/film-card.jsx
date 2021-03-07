@@ -5,8 +5,7 @@ import Header from "../main-page/header";
 import {PROPS_FILM} from "../../prop-validation";
 
 const FilmCard = (props) => {
-  const {films, filmIndex} = props;
-  const film = films[filmIndex];
+  const {film} = props;
   const {
     id,
     name,
@@ -60,8 +59,7 @@ const FilmCard = (props) => {
 };
 
 FilmCard.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
-  filmIndex: PropTypes.number.isRequired
+  film: PropTypes.shape(PROPS_FILM)
 };
 
 export default FilmCard;

@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {PROPS_FILM} from "../../prop-validation";
 
-const FilmCardSmall = (film) => {
+const FilmCardSmall = (props) => {
+  const film = props;
   const {id, name, posterImage} = film;
   return (
     <article className="small-movie-card catalog__movies-card">

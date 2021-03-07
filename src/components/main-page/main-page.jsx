@@ -8,11 +8,11 @@ import {PROPS_FILM} from "../../prop-validation";
 const MainPage = (props) => {
   const {filters, films} = props;
   const FILM_INDEX = 0;
+  const film = films[FILM_INDEX];
   return (
     <>
       <FilmCard
-        films = {films}
-        filmIndex = {FILM_INDEX}
+        film = {film}
       />
       <div className="page-content">
         <Catalog
