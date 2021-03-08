@@ -1,11 +1,25 @@
 import React from "react";
+import PropTypes from "prop-types";
+import {useHistory, useParams} from "react-router-dom";
+import {PROPS_FILM} from "../../prop-validation";
 
-const Player = () => {
+const Player = (props) => {
+  const {films} = props;
+  const history = useHistory();
+  const {id} = useParams();
+  const currentFilm = films.find((film) => film.id === id);
+  const {name, videoLink, runtime} = currentFilm;
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={videoLink} className="player__video" poster="img/player-poster.jpg"></video>
 
-      <button type="button" className="player__exit">Exit</button>
+      <button
+        type="button"
+        className="player__exit"
+        onClick={() => history.push(`/films/${id}`)}
+      >
+        Exit
+      </button>
 
       <div className="player__controls">
         <div className="player__controls-row">
@@ -13,7 +27,7 @@ const Player = () => {
             <progress className="player__progress" value="30" max="100"></progress>
             <div className="player__toggler" style={{left: `30%`}}>Toggler</div>
           </div>
-          <div className="player__time-value">1:30:29</div>
+          <div className="player__time-value">{runtime}</div>
         </div>
 
         <div className="player__controls-row">
@@ -23,7 +37,7 @@ const Player = () => {
             </svg>
             <span>Play</span>
           </button>
-          <div className="player__name">Transpotting</div>
+          <div className="player__name">{name}</div>
 
           <button type="button" className="player__full-screen">
             <svg viewBox="0 0 27 27" width="27" height="27">
@@ -35,6 +49,10 @@ const Player = () => {
       </div>
     </div>
   );
+};
+
+Player.propTypes = {
+  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
 export default Player;

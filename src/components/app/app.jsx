@@ -3,34 +3,44 @@ import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from "../main-page/main-page";
 import Film from "../films/film";
-import AddReview from "../films/review";
+import AddReviewScreen from "../review/add-review-screen";
 import Login from "../login/login";
 import MyList from "../my-list/mylist";
 import Player from "../player/player";
 import PageNotFound from "../404";
+import {PROPS_FILM} from "../../prop-validation";
 
 const App = (props) => {
-  const {FILMS} = props;
+  const {films} = props;
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainPage FILMS={FILMS}/>
+          <MainPage
+            films={films}/>
         </Route>
         <Route exact path="/login">
           <Login />
         </Route>
         <Route exact path="/mylist">
-          <MyList />
+          <MyList
+            films={films}
+          />
         </Route>
         <Route exact path="/films/:id">
-          <Film />
+          <Film
+            films={films}
+          />
         </Route>
         <Route exact path="/films/:id/review">
-          <AddReview />
+          <AddReviewScreen
+            films={films}
+          />
         </Route>
         <Route exact path="/player/:id">
-          <Player />
+          <Player
+            films={films}
+          />
         </Route>
         <Route>
           <PageNotFound />
@@ -41,7 +51,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  FILMS: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
 export default App;
