@@ -6,7 +6,7 @@ import Catalog from "../catalog/catalog";
 import {PROPS_FILM} from "../../prop-validation";
 
 const MainPage = (props) => {
-  const {filters, films} = props;
+  const {films} = props;
   const FILM_INDEX = 0;
   const film = films[FILM_INDEX];
   return (
@@ -16,7 +16,6 @@ const MainPage = (props) => {
       />
       <div className="page-content">
         <Catalog
-          filters = {filters}
           films = {films} />
         <Footer />
       </div>
@@ -25,7 +24,6 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  filters: PropTypes.array.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 

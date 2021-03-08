@@ -11,13 +11,12 @@ import PageNotFound from "../404";
 import {PROPS_FILM} from "../../prop-validation";
 
 const App = (props) => {
-  const {filters, films} = props;
+  const {films} = props;
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <MainPage
-            filters={filters}
             films={films}/>
         </Route>
         <Route exact path="/login">
@@ -52,7 +51,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  filters: PropTypes.array.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
