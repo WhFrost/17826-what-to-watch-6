@@ -1,8 +1,6 @@
 import {nanoid} from "nanoid";
 import {getRandomInteger, getRandomItem} from "../common";
-
-const COUNT_FILMS = 8;
-const MAX_STARS = 5;
+import {COUNT_FILMS, MAX_STARS} from "../const";
 
 const names = [
   `The Grand Budapest Hotel`,
@@ -114,5 +112,7 @@ const getFilm = () => {
 const films = new Array(COUNT_FILMS).fill().map(getFilm);
 
 export {
+  DESCRIPTION,
+  DIRECTORS,
   films
 };

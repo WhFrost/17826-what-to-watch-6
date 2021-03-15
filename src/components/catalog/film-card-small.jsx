@@ -5,7 +5,7 @@ import {PROPS_FILM} from "../../prop-validation";
 import PlayerPreview from "../player/player-preview";
 
 const FilmCardSmall = (props) => {
-  const film = props;
+  const {film} = props;
   const {id, name, posterImage, previewImage, previewVideoLink} = film;
   const [startPlayer, setStartPlayer] = useState(false);
   const [timer, setTimer] = useState(null);

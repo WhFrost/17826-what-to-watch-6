@@ -8,16 +8,17 @@ import Login from "../login/login";
 import MyList from "../my-list/mylist";
 import Player from "../player/player";
 import PageNotFound from "../404";
-import {PROPS_FILM} from "../../prop-validation";
+import {PROPS_FILM, PROPS_COMMENT} from "../../prop-validation";
 
 const App = (props) => {
-  const {films} = props;
+  const {films, reviews} = props;
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <MainPage
-            films={films}/>
+            films={films}
+          />
         </Route>
         <Route exact path="/login">
           <Login />
@@ -30,6 +31,7 @@ const App = (props) => {
         <Route exact path="/films/:id">
           <Film
             films={films}
+            reviews={reviews}
           />
         </Route>
         <Route exact path="/films/:id/review">
@@ -52,6 +54,7 @@ const App = (props) => {
 
 App.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape(PROPS_COMMENT)).isRequired,
 };
 
 export default App;

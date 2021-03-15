@@ -16,7 +16,8 @@ const MainPage = (props) => {
       />
       <div className="page-content">
         <Catalog
-          films = {films} />
+          films = {films}
+        />
         <Footer />
       </div>
     </>
