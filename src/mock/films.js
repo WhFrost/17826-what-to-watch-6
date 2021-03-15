@@ -114,8 +114,5 @@ const getFilm = () => {
 const films = new Array(COUNT_FILMS).fill().map(getFilm);
 
 export {
-  GENRES,
-  DESCRIPTION,
-  DIRECTORS,
   films
 };
