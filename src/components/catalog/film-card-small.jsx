@@ -21,7 +21,9 @@ const FilmCardSmall = (props) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseEnter={() => setTimeout(() => setStartPlayer(true), 1000)}
+      onMouseEnter={() => {
+        setTimer(() => setTimeout(() => setStartPlayer(true), 1000));
+      }}
       onMouseLeave={() => {
         clearTimeout(timer);
         setTimer(null);
