@@ -40,8 +40,9 @@ const FilmCardSmall = (props) => {
       </div>
       <h3 className="small-movie-card__title">
         <Link className="small-movie-card__link"
-          to={`/films/${id}`
-          }>{name}</Link>
+          to={`/films/${id}`}
+          onClick={() => setStartPlayer(false)}
+        >{name}</Link>
       </h3>
     </article>
   );
