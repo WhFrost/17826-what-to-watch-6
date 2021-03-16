@@ -6,7 +6,13 @@ import {PROPS_FILM} from "../../prop-validation";
 const FilmsList = ({films}) => {
   return <div className="catalog__movies-list">
     {
-      films.map((film) => <FilmCardSmall key={film.id} id={film.id} name={film.name} posterImage={film.posterImage}/>)
+      films.map((film) => <FilmCardSmall key={film.id}
+        id={film.id}
+        name={film.name}
+        posterImage={film.posterImage}
+        previewVideoLink={film.previewVideoLink}
+        previewImage={film.previewImage}
+      />)
     }
   </div>;
 };
