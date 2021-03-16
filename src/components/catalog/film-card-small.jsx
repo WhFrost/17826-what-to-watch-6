@@ -1,19 +1,20 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {PROPS_FILM} from "../../prop-validation";
 import PlayerPreview from "../player/player-preview";
 
 const FilmCardSmall = (props) => {
-  const film = props;
+  const {film} = props;
   const {id, name, posterImage, previewImage, previewVideoLink} = film;
   const [startPlayer, setStartPlayer] = useState(false);
-  const [timer, setTimer] = useState(null);
+
+  const timeRef = useRef(null);
 
   useEffect(() => {
     return () => {
-      if (timer !== null) {
-        clearTimeout(timer);
+      if (timeRef.current !== null) {
+        clearTimeout(timeRef.current);
       }
     };
   });
@@ -22,11 +23,11 @@ const FilmCardSmall = (props) => {
     <article
       className="small-movie-card catalog__movies-card"
       onMouseEnter={() => {
-        setTimer(() => setTimeout(() => setStartPlayer(true), 1000));
+        timeRef.current = setTimeout(() => setStartPlayer(true), 1000);
       }}
       onMouseLeave={() => {
-        clearTimeout(timer);
-        setTimer(null);
+        clearTimeout(timeRef.current);
+        timeRef.current = null;
         setStartPlayer(false);
       }}
     >

@@ -4,10 +4,11 @@ import {Link, useHistory, useParams} from "react-router-dom";
 import Header from "../main-page/header";
 import Footer from "../main-page/footer";
 import FilmsList from "../catalog/films-list";
-import {PROPS_FILM} from "../../prop-validation";
+import {PROPS_FILM, PROPS_COMMENT} from "../../prop-validation";
+import FilmNav from "./film-nav";
 
 const Film = (props) => {
-  const {films} = props;
+  const {films, reviews} = props;
   const history = useHistory();
   const {id} = useParams();
   const currentFilm = films.find((film) => film.id === id);
@@ -16,16 +17,9 @@ const Film = (props) => {
     posterImage,
     backgroundImage,
     backgroundColor,
-    description,
-    rating,
-    scoresCount,
-    director,
-    starring,
     genre,
     released
   } = currentFilm;
-  const currentDescription = description.reduce((total, current) => total + ` ` + current);
-  const currentStarring = starring.reduce((total, current) => total + `, ` + current) + ` `;
 
   return (
     <>
@@ -74,38 +68,8 @@ const Film = (props) => {
               <img src={posterImage} alt={name} width="218" height="327"/>
             </div>
 
-            <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
+            <FilmNav film={currentFilm} reviews={reviews}/>
 
-              <div className="movie-rating">
-                <div className="movie-rating__score">{rating}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">Very good</span>
-                  <span className="movie-rating__count">{scoresCount} ratings</span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-                <p>{currentDescription}</p>
-
-                <p className="movie-card__director"><strong>Director: {director}</strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: {currentStarring}
-                  and other</strong></p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -125,6 +89,7 @@ const Film = (props) => {
 
 Film.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape(PROPS_COMMENT)).isRequired,
 };
 
 export default Film;

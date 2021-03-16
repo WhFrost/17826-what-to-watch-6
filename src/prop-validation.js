@@ -21,13 +21,13 @@ const PROPS_FILM = {
 };
 
 const PROPS_COMMENT = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
   }).isRequired,
   rating: PropTypes.number.isRequired,
-  commentText: PropTypes.string.isRequired,
+  comment: PropTypes.array.isRequired,
   date: PropTypes.string.isRequired
 };
 

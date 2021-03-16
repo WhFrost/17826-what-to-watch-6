@@ -3,20 +3,18 @@ import PropTypes from "prop-types";
 import ReviewItem from "./review-item";
 import {PROPS_COMMENT} from "../../prop-validation";
 
-const ReviewsList = (reviews) => {
-  return <div className="movie-card__reviews movie-card__row">
+const ReviewsList = (props) => {
+  const {reviews} = props;
+
+  return (
     <div className="movie-card__reviews-col">
       {
-        reviews.map((review) => <ReviewItem key={review.id}
-          id={review.id}
-          name={review.name}
-          comment={review.comment}
-          date={review.date}
-          rating={review.rating}
-        />)
-      };
-    </div>
-  </div>;
+        (reviews.length === 0 && <span style={{color: `#252525`}}>Add first review</span>) ||
+        (reviews.map((review) => <ReviewItem key={review.id}
+          review={review}
+        />))
+      }
+    </div>);
 };
 
 ReviewsList.propTypes = {

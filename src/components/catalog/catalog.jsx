@@ -20,7 +20,7 @@ const Catalog = (props) => {
 };
 
 Catalog.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired
+  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
 export default Catalog;
