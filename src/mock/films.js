@@ -62,7 +62,6 @@ const getStars = () => {
   return getRandomItem(STARS);
 };
 const GENRES = [
-  `All genres`,
   `Comedies`,
   `Crime`,
   `Documentary`,
@@ -114,5 +113,6 @@ const films = new Array(COUNT_FILMS).fill().map(getFilm);
 export {
   DESCRIPTION,
   DIRECTORS,
+  GENRES,
   films
 };

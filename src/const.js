@@ -7,8 +7,11 @@ const FilmTab = {
   REVIEWS: `Reviews`,
 };
 
+const DEFAULT_GENRE = `All genres`;
+
 export {
   COUNT_FILMS,
   MAX_STARS,
-  FilmTab
+  FilmTab,
+  DEFAULT_GENRE
 };
