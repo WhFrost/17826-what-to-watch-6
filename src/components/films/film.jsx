@@ -9,6 +9,7 @@ import FilmNav from "./film-nav";
 
 const Film = (props) => {
   const {films, reviews} = props;
+  console.log(films);
   const history = useHistory();
   const {id} = useParams();
   const currentFilm = films.find((film) => film.id === id);
@@ -20,6 +21,7 @@ const Film = (props) => {
     genre,
     released
   } = currentFilm;
+  console.log(currentFilm);
 
   return (
     <>

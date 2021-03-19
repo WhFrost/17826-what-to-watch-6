@@ -31,14 +31,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         currentGenre: action.payload
       };
-    case ActionType.FILTER_FILMS_BY_GENRE:
-      return {
-        ...state,
-        filteredFilmsByGenre:
-        state.currentGenre === DEFAULT_GENRE
-          ? films
-          : films.filter((film) => film.genre === action.payload)
-      };
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-const COUNT_FILMS = 10;
+const COUNT_FILMS = 5;
 const INIT_QUANTITY_FILMS_TO_SHOW = 8;
 const INC_QUANTITY_FILMS_TO_SHOW = 8;
 const MAX_STARS = 5;
