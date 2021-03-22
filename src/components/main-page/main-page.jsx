@@ -80,7 +80,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 MainPage.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
-  promoFilm: PropTypes.shape(PROPS_FILM).isRequired,
+  promoFilm: PropTypes.shape(PROPS_FILM),
   isDataLoaded: PropTypes.bool.isRequired,
   onLoadData: PropTypes.func.isRequired,
   getGenres: PropTypes.func.isRequired,

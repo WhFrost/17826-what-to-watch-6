@@ -3,11 +3,17 @@ import PropTypes from "prop-types";
 import {useHistory} from "react-router-dom";
 import Header from "../main-page/header";
 import {PROPS_FILM} from "../../prop-validation";
+import Loading from "../loading/loading";
 
 const PromoFilm = (props) => {
   const {
     promoFilm
   } = props;
+
+  if (promoFilm === null) {
+    return (<Loading />);
+  }
+
   const {
     id,
     name,
