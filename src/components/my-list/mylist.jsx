@@ -5,6 +5,7 @@ import UserBlock from "../main-page/user-block";
 import FilmsList from "../catalog/films-list";
 import Footer from "../main-page/footer";
 import {PROPS_FILM} from "../../prop-validation";
+import {connect} from "react-redux";
 
 const MyList = (props) => {
   const {films} = props;
@@ -29,8 +30,13 @@ const MyList = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  films: state.films,
+});
+
 MyList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
-export default MyList;
+export {MyList};
+export default connect(mapStateToProps, null)(MyList);

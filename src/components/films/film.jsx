@@ -6,13 +6,14 @@ import Footer from "../main-page/footer";
 import FilmsList from "../catalog/films-list";
 import {PROPS_FILM, PROPS_COMMENT} from "../../prop-validation";
 import FilmNav from "./film-nav";
+import {connect} from "react-redux";
 
 const Film = (props) => {
   const {films, reviews} = props;
-  console.log(films);
   const history = useHistory();
   const {id} = useParams();
-  const currentFilm = films.find((film) => film.id === id);
+  const filmId = Number(id);
+  const currentFilm = films.find((film) => film.id === filmId);
   const {
     name,
     posterImage,
@@ -21,7 +22,6 @@ const Film = (props) => {
     genre,
     released
   } = currentFilm;
-  console.log(currentFilm);
 
   return (
     <>
@@ -45,7 +45,7 @@ const Film = (props) => {
                 <button
                   className="btn btn--play movie-card__button"
                   type="button"
-                  onClick={() => history.push(`/player/${id}`)}
+                  onClick={() => history.push(`/player/${filmId}`)}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -58,7 +58,7 @@ const Film = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
+                <Link to={`/films/${filmId}/review`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -89,9 +89,15 @@ const Film = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  films: state.films,
+});
+
 Film.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
   reviews: PropTypes.arrayOf(PropTypes.shape(PROPS_COMMENT)).isRequired,
 };
 
-export default Film;
+export {Film};
+export default connect(mapStateToProps, null)(Film);
+

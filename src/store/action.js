@@ -1,27 +1,33 @@
 const ActionType = {
-  CHANGE_GENRE: `genresList/changeGenre`,
-  FILTER_FILMS_BY_GENRE: `filmsList/filterFilms`,
   LOAD_FILMS: `data/loadFilms`,
-  GET_GENRES: `data/getGenres`
+  GET_PROMO_FILM: `data/getPromoFilm`,
+  GET_GENRES: `data/getGenres`,
+  CHANGE_GENRE: `genresList/changeGenre`,
+  REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
 };
 
 const ActionCreator = {
-  changeGenre: (genre) => ({
-    type: ActionType.CHANGE_GENRE,
-    payload: genre
-  }),
-  filterFilmsByGenre: (genre) => ({
-    type: ActionType.FILTER_FILMS_BY_GENRE,
-    payload: genre
-  }),
-  loadFilms: (films) => ({
+  fetchFilmsList: (films) => ({
     type: ActionType.LOAD_FILMS,
-    payload: films
+    payload: films,
+  }),
+  getPromoFilm: (promoFilm) => ({
+    type: ActionType.GET_PROMO_FILM,
+    payload: promoFilm,
+  }),
+  requireAuthorization: (status) => ({
+    type: ActionType.REQUIRED_AUTHORIZATION,
+    payload: status,
   }),
   getGenres: (films) => ({
     type: ActionType.GET_GENRES,
-    payload: films
+    payload: films,
   }),
+  changeGenre: (genre) => ({
+    type: ActionType.CHANGE_GENRE,
+    payload: genre,
+  }),
+
 };
 
 export {

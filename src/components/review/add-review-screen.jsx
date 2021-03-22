@@ -4,6 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import Logo from "../main-page/logo";
 import UserBlock from "../main-page/user-block";
 import {PROPS_FILM} from "../../prop-validation";
+import {connect} from "react-redux";
 
 const AddReviewScreen = (props) => {
   const {films} = props;
@@ -91,8 +92,13 @@ const AddReviewScreen = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  films: state.films,
+});
+
 AddReviewScreen.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
-export default AddReviewScreen;
+export {AddReviewScreen};
+export default connect(mapStateToProps, null)(AddReviewScreen);

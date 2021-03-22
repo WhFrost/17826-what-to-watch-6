@@ -11,37 +11,30 @@ import PageNotFound from "../404";
 import {PROPS_FILM, PROPS_COMMENT} from "../../prop-validation";
 
 const App = (props) => {
-  const {films, reviews} = props;
+  const {reviews} = props;
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainPage
-            films={films}
-          />
+          <MainPage />
         </Route>
         <Route exact path="/login">
           <Login />
         </Route>
         <Route exact path="/mylist">
           <MyList
-            films={films}
           />
         </Route>
         <Route exact path="/films/:id">
           <Film
-            films={films}
-            reviews={reviews}
           />
         </Route>
         <Route exact path="/films/:id/review">
           <AddReviewScreen
-            films={films}
           />
         </Route>
         <Route exact path="/player/:id">
           <Player
-            films={films}
           />
         </Route>
         <Route>
@@ -53,7 +46,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
   reviews: PropTypes.arrayOf(PropTypes.shape(PROPS_COMMENT)).isRequired,
 };
 

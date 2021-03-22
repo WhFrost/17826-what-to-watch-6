@@ -11,11 +11,17 @@ const FilmTab = {
 
 const DEFAULT_GENRE = `All genres`;
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
 export {
   COUNT_FILMS,
   INIT_QUANTITY_FILMS_TO_SHOW,
   INC_QUANTITY_FILMS_TO_SHOW,
   MAX_STARS,
   FilmTab,
-  DEFAULT_GENRE
+  DEFAULT_GENRE,
+  AuthorizationStatus
 };

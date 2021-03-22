@@ -4,8 +4,10 @@ import {useHistory} from "react-router-dom";
 import Header from "../main-page/header";
 import {PROPS_FILM} from "../../prop-validation";
 
-const FilmCard = (props) => {
-  const {film} = props;
+const PromoFilm = (props) => {
+  const {
+    promoFilm
+  } = props;
   const {
     id,
     name,
@@ -13,8 +15,12 @@ const FilmCard = (props) => {
     backgroundImage,
     backgroundColor,
     genre,
-    released} = film;
+    released} = promoFilm;
+
   const history = useHistory();
+
+  console.log(promoFilm);
+
   return (
     <section className="movie-card" style={{backgroundColor}}>
       <div className="movie-card__bg">
@@ -58,8 +64,8 @@ const FilmCard = (props) => {
   );
 };
 
-FilmCard.propTypes = {
-  film: PropTypes.shape(PROPS_FILM)
+PromoFilm.propTypes = {
+  promoFilm: PropTypes.shape(PROPS_FILM)
 };
 
-export default FilmCard;
+export default PromoFilm;

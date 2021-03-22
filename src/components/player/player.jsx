@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {useHistory, useParams} from "react-router-dom";
 import {PROPS_FILM} from "../../prop-validation";
+import {connect} from "react-redux";
 
 const Player = (props) => {
   const {films} = props;
@@ -51,8 +52,13 @@ const Player = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  films: state.films,
+});
+
 Player.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
 };
 
-export default Player;
+export {Player};
+export default connect(mapStateToProps, null)(Player);
