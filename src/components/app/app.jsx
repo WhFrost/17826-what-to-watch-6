@@ -8,7 +8,7 @@ import Login from "../login/login";
 import MyList from "../my-list/mylist";
 import Player from "../player/player";
 import PageNotFound from "../404";
-import {PROPS_FILM, PROPS_COMMENT} from "../../prop-validation";
+import {PROPS_COMMENT} from "../../prop-validation";
 
 const App = (props) => {
   const {reviews} = props;
@@ -27,6 +27,7 @@ const App = (props) => {
         </Route>
         <Route exact path="/films/:id">
           <Film
+            reviews={reviews}
           />
         </Route>
         <Route exact path="/films/:id/review">

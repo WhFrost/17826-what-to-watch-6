@@ -19,8 +19,6 @@ const PromoFilm = (props) => {
 
   const history = useHistory();
 
-  console.log(promoFilm);
-
   return (
     <section className="movie-card" style={{backgroundColor}}>
       <div className="movie-card__bg">

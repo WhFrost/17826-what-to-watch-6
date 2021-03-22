@@ -44,9 +44,9 @@ const MainPage = (props) => {
 
   return (
     <>
-      {/* <PromoFilm
+      <PromoFilm
         promoFilm = {promoFilm}
-      />; */}
+      />
 
       <div className="page-content">
         <Catalog
