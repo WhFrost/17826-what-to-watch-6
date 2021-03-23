@@ -3,8 +3,13 @@ import React from "react";
 const LoadingScreen = () => {
   return (
     <>
-      <h2>Loading</h2>
-      <p>Please wait</p>
+      <div className="cssload-container"
+        style={{
+          margin: `25%`
+        }}
+      >
+        <div className="cssload-whirlpool"></div>
+      </div>
     </>
   );
 };

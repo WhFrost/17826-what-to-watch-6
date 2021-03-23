@@ -5,6 +5,7 @@ import {PROPS_FILM} from "../../prop-validation";
 
 const FilmsList = (props) => {
   const {filteredFilmsByGenre, quantityFilmsToShow} = props;
+
   return (
     <>
       <div className="catalog__movies-list">

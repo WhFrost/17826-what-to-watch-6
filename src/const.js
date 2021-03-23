@@ -14,6 +14,16 @@ const DEFAULT_GENRE = `All genres`;
 const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
+  WAITING_AUTH: `WAITING_AUTH`,
+};
+
+const AppLinks = {
+  MAIN: `/`,
+  LOGIN: `/login`,
+  MY_LIST: `/mylist`,
+  FILM: `/films/:id`,
+  REVIEW: `/films/:id/review`,
+  PLAYER: `/player/:id`,
 };
 
 export {
@@ -23,5 +33,6 @@ export {
   MAX_STARS,
   FilmTab,
   DEFAULT_GENRE,
-  AuthorizationStatus
+  AuthorizationStatus,
+  AppLinks
 };

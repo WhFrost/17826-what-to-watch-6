@@ -7,13 +7,19 @@ import FilmsList from "../catalog/films-list";
 import {PROPS_FILM, PROPS_COMMENT} from "../../prop-validation";
 import FilmNav from "./film-nav";
 import {connect} from "react-redux";
+import Loading from "../loading/loading";
 
 const Film = (props) => {
   const {films, reviews} = props;
   const history = useHistory();
   const {id} = useParams();
   const filmId = Number(id);
-  const currentFilm = films.find((film) => film.id === filmId);
+  const currentFilm = films.find((film) => film.id === parseInt(id, 10));
+
+  if (!currentFilm) {
+    return (<Loading />);
+  }
+
   const {
     name,
     posterImage,

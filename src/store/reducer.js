@@ -15,7 +15,7 @@ const initialState = {
   currentGenre: DEFAULT_GENRE,
   initQuantityFilmsToShow: INIT_QUANTITY_FILMS_TO_SHOW,
   incQuantityFilmsToShow: INC_QUANTITY_FILMS_TO_SHOW,
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  authorizationStatus: AuthorizationStatus.WAITING_AUTH,
   isDataLoaded: false
 };
 

@@ -21,14 +21,22 @@ const checkAuth = () => (dispatch, _getState, api) => (
     .catch(() => {})
 );
 
-const login = ({login: email, password}) => (dispatch, _getState, api) => (
+const login = ({email, password}) => (dispatch, _getState, api) => (
   api.post(`/login`, {email, password})
     .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+    .catch(() => {})
+);
+
+const logout = () => (next, _getState, api) => (
+  api.get(`/logout`)
+    .then(() => next(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH)))
+    .catch(() => {})
 );
 
 export {
   fetchFilmsList,
   fetchPromoFilm,
   checkAuth,
-  login
+  login,
+  logout
 };

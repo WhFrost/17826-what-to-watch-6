@@ -1,9 +1,36 @@
-import React from "react";
+import React, {useRef} from "react";
+import PropTypes from "prop-types";
+import {Redirect, useHistory} from "react-router-dom";
 import Logo from "../main-page/logo";
 import Footer from "../main-page/footer";
+import {connect} from "react-redux";
+import {login} from "../../store/api-actions";
+import {AuthorizationStatus, AppLinks} from "../../const";
+import Loading from "../loading/loading";
 
-const Login = () => {
+const Login = (props) => {
+  const {onSubmit, authorizationStatus} = props;
+
+  const loginRef = useRef();
+  const passwordRef = useRef();
+
+  const history = useHistory();
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onSubmit({
+      email: loginRef.current.value,
+      password: passwordRef.current.value,
+    });
+    history.push(AppLinks.MAIN);
+  };
+
   return (
+    authorizationStatus === AuthorizationStatus.WAITING_AUTH &&
+    <Loading /> ||
+    authorizationStatus === AuthorizationStatus.AUTH &&
+    <Redirect to={AppLinks.ROOT} /> ||
+    authorizationStatus === AuthorizationStatus.NO_AUTH &&
     <div className="user-page">
       <header className="page-header user-page__head">
         <Logo />
@@ -15,16 +42,20 @@ const Login = () => {
         <form action="#" className="sign-in__form">
           <div className="sign-in__fields">
             <div className="sign-in__field">
-              <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email"/>
+              <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" ref={loginRef}/>
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
             <div className="sign-in__field">
-              <input className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password"/>
+              <input className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" ref={passwordRef}/>
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>
           </div>
           <div className="sign-in__submit">
-            <button className="sign-in__btn" type="submit">Sign in</button>
+            <button className="sign-in__btn" type="submit"
+              onClick={handleSubmit}
+            >
+              Sign in
+            </button>
           </div>
         </form>
       </div>
@@ -33,4 +64,20 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.authorizationStatus,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit(authData) {
+    dispatch(login(authData));
+  }
+});
+
+Login.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
+export {Login};
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
