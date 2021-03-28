@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {PROPS_FILM} from "../../prop-validation";
 import PlayerPreview from "../player/player-preview";
+import {AppRoute} from "../../const";
 
 const FilmCardSmall = (props) => {
   const {film} = props;
@@ -43,7 +44,7 @@ const FilmCardSmall = (props) => {
       </div>
       <h3 className="small-movie-card__title">
         <Link className="small-movie-card__link"
-          to={`/films/${id}`}
+          to={`${AppRoute.FILMS}/${id}`}
           onClick={() => setStartPlayer(false)}
         >{name}</Link>
       </h3>

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Redirect, Route} from "react-router";
-import {AppLinks, AuthorizationStatus} from "../../const";
+import {AppRoute, AuthorizationStatus} from "../../const";
 import Loading from "../loading/loading";
 
 const PrivateRoute = ({render, path, exact, authorizationStatus}) => {
@@ -15,7 +15,7 @@ const PrivateRoute = ({render, path, exact, authorizationStatus}) => {
           authorizationStatus === AuthorizationStatus.WAITING_AUTH &&
           <Loading /> ||
           authorizationStatus === AuthorizationStatus.NO_AUTH &&
-          <Redirect to={AppLinks.LOGIN} /> ||
+          <Redirect to={AppRoute.LOGIN} /> ||
           authorizationStatus === AuthorizationStatus.AUTH &&
           render(routerProps)
         );

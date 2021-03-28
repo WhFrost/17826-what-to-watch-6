@@ -17,14 +17,24 @@ const AuthorizationStatus = {
   WAITING_AUTH: `WAITING_AUTH`,
 };
 
-const AppLinks = {
-  MAIN: `/`,
+const AppRoute = {
+  ROOT: `/`,
   LOGIN: `/login`,
   MY_LIST: `/mylist`,
-  FILM: `/films/:id`,
+  FILMS: `/films`,
   REVIEW: `/films/:id/review`,
   PLAYER: `/player/:id`,
 };
+
+const APIRoute = {
+  FILMS: `/films`,
+  PROMO: `/films/promo`,
+  COMMENTS: `/comments`,
+  LOGIN: `/login`,
+  ERROR: `/error`
+};
+
+const LOGIN_ERROR_MESSAGE = `Login/Password incorrected. Please try again.`;
 
 export {
   COUNT_FILMS,
@@ -34,5 +44,7 @@ export {
   FilmTab,
   DEFAULT_GENRE,
   AuthorizationStatus,
-  AppLinks
+  AppRoute,
+  APIRoute,
+  LOGIN_ERROR_MESSAGE
 };

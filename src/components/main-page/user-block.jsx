@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {logout} from "../../store/api-actions";
-import {AuthorizationStatus, AppLinks} from "../../const";
+import {AuthorizationStatus, AppRoute} from "../../const";
 
 const UserBlock = (props) => {
   const {authorizationStatus, onLogout} = props;
@@ -28,14 +28,14 @@ const UserBlock = (props) => {
             marginLeft: `10px`
           }}
         >
-          <Link to={AppLinks.MY_LIST}>
+          <Link to={AppRoute.MY_LIST}>
             <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
           </Link>
         </div>
       </div>
       ||
       <div className="user-block">
-        <Link to={AppLinks.LOGIN} className="user-block__link">Sign in</Link>
+        <Link to={AppRoute.LOGIN} className="user-block__link">Sign in</Link>
       </div>
     }
   </>;

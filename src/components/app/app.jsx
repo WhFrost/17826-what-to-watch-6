@@ -1,40 +1,47 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 import PrivateRoute from "../private-route/private-route";
 import MainPage from "../main-page/main-page";
-import Film from "../films/film";
+import FilmScreen from "../films/film-screen";
 import AddReviewScreen from "../review/add-review-screen";
 import Login from "../login/login";
 import MyList from "../my-list/mylist";
 import Player from "../player/player";
 import PageNotFound from "../404";
 import {PROPS_COMMENT} from "../../prop-validation";
-import {AppLinks} from "../../const";
+import {AppRoute} from "../../const";
+import browserHistory from "../../browser-history";
 
 const App = (props) => {
   const {reviews} = props;
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
-        <Route exact path={AppLinks.MAIN}>
+        <Route exact path={AppRoute.ROOT}>
           <MainPage />
         </Route>
-        <Route exact path={AppLinks.LOGIN}>
+        <Route exact path={AppRoute.LOGIN}>
           <Login />
         </Route>
-        <PrivateRoute exact path={AppLinks.MY_LIST}
+        <PrivateRoute exact path={AppRoute.MY_LIST}
           render={() => <MyList />}
         />
-        <Route exact path={AppLinks.FILM}>
-          <Film
+        <Route exact path={`${AppRoute.FILMS}/:id`}
+          render={({match}) => (
+            <FilmScreen
+              id={Number(match.params.id)}
+            />
+          )}
+        >
+          <FilmScreen
             reviews={reviews}
           />
         </Route>
-        <PrivateRoute exact path={AppLinks.REVIEW}
+        <PrivateRoute exact path={AppRoute.REVIEW}
           render={() => <AddReviewScreen/>}
         />
-        <Route exact path={AppLinks.PLAYER}>
+        <Route exact path={AppRoute.PLAYER}>
           <Player
           />
         </Route>

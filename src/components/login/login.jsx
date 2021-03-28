@@ -1,12 +1,13 @@
 import React, {useRef} from "react";
 import PropTypes from "prop-types";
-import {Redirect, useHistory} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import Logo from "../main-page/logo";
 import Footer from "../main-page/footer";
 import {connect} from "react-redux";
 import {login} from "../../store/api-actions";
-import {AuthorizationStatus, AppLinks} from "../../const";
+import {AuthorizationStatus, AppRoute} from "../../const";
 import Loading from "../loading/loading";
+import LoginError from "../login/login-error";
 
 const Login = (props) => {
   const {onSubmit, authorizationStatus} = props;
@@ -14,22 +15,19 @@ const Login = (props) => {
   const loginRef = useRef();
   const passwordRef = useRef();
 
-  const history = useHistory();
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onSubmit({
       email: loginRef.current.value,
       password: passwordRef.current.value,
     });
-    history.push(AppLinks.MAIN);
   };
 
   return (
     authorizationStatus === AuthorizationStatus.WAITING_AUTH &&
     <Loading /> ||
     authorizationStatus === AuthorizationStatus.AUTH &&
-    <Redirect to={AppLinks.ROOT} /> ||
+    <Redirect to={AppRoute.ROOT} /> ||
     authorizationStatus === AuthorizationStatus.NO_AUTH &&
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -39,6 +37,9 @@ const Login = (props) => {
       </header>
 
       <div className="sign-in user-page__content">
+
+        <LoginError />
+
         <form action="#" className="sign-in__form">
           <div className="sign-in__fields">
             <div className="sign-in__field">

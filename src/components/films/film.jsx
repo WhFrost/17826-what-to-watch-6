@@ -1,33 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Link, useHistory, useParams} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import Header from "../main-page/header";
 import Footer from "../main-page/footer";
 import FilmsList from "../catalog/films-list";
 import {PROPS_FILM, PROPS_COMMENT} from "../../prop-validation";
 import FilmNav from "./film-nav";
 import {connect} from "react-redux";
-import Loading from "../loading/loading";
 
 const Film = (props) => {
-  const {films, reviews} = props;
+  const {film, reviews} = props;
   const history = useHistory();
-  const {id} = useParams();
-  const filmId = Number(id);
-  const currentFilm = films.find((film) => film.id === parseInt(id, 10));
-
-  if (!currentFilm) {
-    return (<Loading />);
-  }
 
   const {
+    id,
     name,
     posterImage,
     backgroundImage,
     backgroundColor,
     genre,
     released
-  } = currentFilm;
+  } = film;
 
   return (
     <>
@@ -51,7 +44,7 @@ const Film = (props) => {
                 <button
                   className="btn btn--play movie-card__button"
                   type="button"
-                  onClick={() => history.push(`/player/${filmId}`)}
+                  onClick={() => history.push(`/player/${id}`)}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -64,7 +57,7 @@ const Film = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to={`/films/${filmId}/review`} className="btn movie-card__button">Add review</Link>
+                <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -76,7 +69,7 @@ const Film = (props) => {
               <img src={posterImage} alt={name} width="218" height="327"/>
             </div>
 
-            <FilmNav film={currentFilm} reviews={reviews}/>
+            <FilmNav film={film} reviews={reviews}/>
 
           </div>
         </div>
@@ -86,7 +79,7 @@ const Film = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmsList films={films}/>
+          <FilmsList />
 
         </section>
         <Footer />
@@ -96,11 +89,11 @@ const Film = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  films: state.films,
+  film: state.activeFilm,
 });
 
 Film.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
+  film: PropTypes.arrayOf(PropTypes.shape(PROPS_FILM)).isRequired,
   reviews: PropTypes.arrayOf(PropTypes.shape(PROPS_COMMENT)).isRequired,
 };
 
